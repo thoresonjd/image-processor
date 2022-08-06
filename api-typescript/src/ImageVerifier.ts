@@ -1,11 +1,11 @@
-import MIMETypes from './MIMETypes.json';
+import * as fs from 'fs';
 
 class ImageVerifier {
 
     private supportedTypes: Record<string, string>;
 
     constructor() {
-        this.supportedTypes = MIMETypes;
+        this.supportedTypes = JSON.parse(fs.readFileSync('src/MIMETypes.json').toString());
     }
 
     public hasImage(image: string | undefined): boolean {
